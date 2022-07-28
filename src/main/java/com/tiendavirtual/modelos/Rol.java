@@ -41,5 +41,8 @@ public class Rol {
 
     }
 
+    @ManyToOne()
+    @JoinColumn(name = "idRol")
+    private Cliente cliente;
 
 }
