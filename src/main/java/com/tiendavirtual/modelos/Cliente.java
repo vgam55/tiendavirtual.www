@@ -96,8 +96,13 @@ public class Cliente {
     @Column(name="idRol")
     private Integer idRol;
 
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rol_id", nullable = false, updatable = false)
     @Getter
     @Setter
-    private List<Rol> rolList;
+    private Rol rol;
+
+
+
+
 }

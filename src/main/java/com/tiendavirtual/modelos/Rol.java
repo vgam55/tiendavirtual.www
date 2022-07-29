@@ -6,12 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
 @NoArgsConstructor
-@Getter
-@Setter
 @AllArgsConstructor
 public class Rol {
 
@@ -41,8 +40,11 @@ public class Rol {
 
     }
 
-    @ManyToOne()
-    @JoinColumn(name = "idRol")
-    private Cliente cliente;
+    @OneToMany(mappedBy = "rol")
+    @Getter
+    @Setter
+    private List<Cliente> cliente;
+
+
 
 }
