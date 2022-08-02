@@ -12,11 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Producto {
-    @Getter
-    @Setter
-    @Column(name="idProducto")
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id_producto")
+    @Getter
+    @Setter
     private Integer idProducto;
 
     @Getter
@@ -26,8 +27,13 @@ public class Producto {
 
     @Getter
     @Setter
-    @Column(name="referencia")
+    @Column(name="nombre")
     private String nombre;
+
+    @Getter
+    @Setter
+    @Column(name="peso")
+    private String peso;
 
     @Getter
     @Setter
@@ -51,8 +57,13 @@ public class Producto {
 
     @Getter
     @Setter
-    @Column(name="vistaGeneral")
+    @Column(name="vista_general")
     private String vistaGeneral;
+
+    @Getter
+    @Setter
+    @Column(name="caracteristicas")
+    private String caracteristicas;
 
     @Getter
     @Setter
@@ -66,7 +77,7 @@ public class Producto {
 
     @Getter
     @Setter
-    @Column(name="usosSugeridos")
+    @Column(name="usos_sugeridos")
     private String usosSugeridos;
 
 }

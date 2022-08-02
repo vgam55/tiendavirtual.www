@@ -40,10 +40,7 @@ public class Rol {
 
     }
 
-    @OneToMany(mappedBy = "rol")
-    @Getter
-    @Setter
-    private List<Cliente> cliente;
+
 
 
 

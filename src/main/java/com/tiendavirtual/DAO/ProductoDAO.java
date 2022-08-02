@@ -6,7 +6,7 @@ import com.tiendavirtual.modelos.Producto;
 import java.util.List;
 
 public interface ProductoDAO {
-    List<Producto> getAllProducto();
+    List<Producto> getAllProductos();
     void addProducto(Producto producto);
     void deleteProducto(Integer id);
     Producto findProductoById(Integer id);

@@ -96,11 +96,6 @@ public class Cliente {
     @Column(name="idRol")
     private Integer idRol;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rol_id", nullable = false, updatable = false)
-    @Getter
-    @Setter
-    private Rol rol;
 
 
 

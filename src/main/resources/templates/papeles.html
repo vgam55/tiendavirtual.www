@@ -18,9 +18,6 @@
             <td th:text="${rol.getId_rol()}" >1</td>
             <td th:text="${rol.getRol()}" />
             <td th:text="${rol.getDescripcion()}" />
-            <td th:each="cl:${rol.getCliente()}"
-                <span th:text="${cl.getNombre()}}"/>
-            </td>
         </tr>
     </table>
 
