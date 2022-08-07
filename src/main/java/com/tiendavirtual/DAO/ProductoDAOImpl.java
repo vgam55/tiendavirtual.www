@@ -49,4 +49,10 @@ public class ProductoDAOImpl implements ProductoDAO{
     public void actualizarProducto(Producto producto) {
 
     }
+
+    public List<Producto>getProductoBySubCat(String subcategoria)
+    {
+        ArrayList<Producto>listaProducto=null;
+        return listaProducto;
+    }
 }

@@ -19,7 +19,7 @@ public class ProductoController {
     private ProductoDAO productoDAO;
 
 
-    @RequestMapping(value="/productos", method= RequestMethod.GET)
+    @RequestMapping(value="/productosAdmin", method= RequestMethod.GET)
     public String getAll(Model modelo)
     {
         ArrayList<Producto> productos2=new ArrayList<Producto>();
@@ -27,4 +27,11 @@ public class ProductoController {
        modelo.addAttribute("productos2",productos2);
         return "productos";
     }
+
+    @RequestMapping(value="/productosCli/{subcategoria}", method=RequestMethod.GET)
+    public String getProductosbySubCat(Model model, String subcat)
+    {
+        return subcat;
+    }
+
 }
