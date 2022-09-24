@@ -50,9 +50,14 @@ public class ProductoDAOImpl implements ProductoDAO{
 
     }
 
-    public List<Producto>getProductoBySubCat(String subcategoria)
+    public List<Producto>getProductoBySubCat(Integer subcategoria)
     {
-        ArrayList<Producto>listaProducto=null;
+        String select="SELECT p FROM Producto p WHERE id_subcat= "+subcategoria;
+        System.out.println(select);
+        Query query;
+        List<Producto> listaProducto=new ArrayList<Producto>();
+        query=entityManager.createQuery(select);
+        listaProducto=query.getResultList();
         return listaProducto;
     }
 }

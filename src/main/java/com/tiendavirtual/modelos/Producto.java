@@ -80,4 +80,8 @@ public class Producto {
     @Column(name="usos_sugeridos")
     private String usosSugeridos;
 
+    @Getter
+    @Setter
+    @Column(name="id_subcat")
+    private Integer id_subcat;
 }

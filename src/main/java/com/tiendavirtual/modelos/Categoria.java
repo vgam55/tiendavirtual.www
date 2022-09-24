@@ -1,9 +1,6 @@
 package com.tiendavirtual.modelos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.List;
 @Table(name="categorias")
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Categoria {
     @Column(name="id_categoria", insertable=false, updatable=false )
     @Id

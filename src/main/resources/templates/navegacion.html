@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba para crear un navbar</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    ul, ol{
+                list-style:none;
+            }
+     #desplegable li a{
+
+                    width:500px;
+                    text-decoration: none;
+                    padding:10px 15px;
+                    display:block;
+     }
+    #desplegable > li {
+        float: left;
+    }
+
+    #desplegable li a:hover{
+        background-color:#434343;
+     }
+     #desplegable  li ul  {
+        display: none;
+        position: absolute;
+        min-width:140px;
+     }
+
+     #desplegable li:hover>ul{
+        display: block;
+     }
+
+    #desplegable li ul il{
+        position: relative;
+    }
+    #desplegable li ul li ul{
+        right:-140px;
+        top:0px;
+    }
+</style>
+</head>
+<body>
+<!-- Inicio de la barra de navegación-->
+<nav >
+   <!-- <ul>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Productos
+            </a>
+            <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a th:each="categoria:${listaCategorias}" th:text="${categoria.getNombre()}" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                <div>
+
+                </div>
+            </div>
+        </li>
+    </ul>-->
+    <ul id="desplegable" class="bg-primary text-white">
+        <li>
+            <a href="#">Productos</a>
+            <ul class="bg-light text-dark">
+                <li>
+                    <a href="#">Belleza</a>
+                    <ul>
+                        <li><a href="#">Maquillaje</a></li>
+                        <li><a href="#">Cuidado de la piel</a></li>
+                        <li><a href="#">Cuerpo</a></li>
+                        <li><a href="#">Acessorios de Belleza</a></li>
+                        <li><a href="#">Mostrar todos los productos</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#">Nutrición</a>
+                    <ul>
+                        <li><a href="#">Complementos especificos</a></li>
+                        <li><a href="#">Complementos fundamentales</a></li>
+                        <li><a href="#">Belleza Interior</a></li>
+                        <li><a href="#">Alimentos y Bebidas</a></li>
+                        <li><a href="#">Control de peso</a></li>
+                        <li><a href="#">Soluciones Personalizadas</a></li>
+                        <li><a href="#">Nutrición Deportiva</a></li>
+                        <li><a href="#">Estilo de vida activo</a></li>
+                        <li><a href="#">Soluciones XS</a></li>
+                        <li><a href="#">Mostrar todos los productos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Cuidado Personal</a>
+                    <ul>
+                        <li><a href="#">Cuidado del cabello</a></li>
+                        <li><a href="#">Baño y Cuerpo</a></li>
+                        <li><a href="#">Fragancias</a></li>
+                        <li><a href="#">Aseo personal masculino</a></li>
+                        <li><a href="#">Cuidado bucal</a></li>
+                        <li><a href="#">Mostrar todos los productos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Hogar</a>
+                    <ul>
+                        <li><a href="#">Cuidado de la ropa</a></li>
+                        <li><a href="#">Cuidado de las superficies</a></li>
+                        <li><a href="#">Cuidado de la vajilla</a></li>
+                        <li><a href="#">Limpieza auxiliar</a></li>
+                        <li><a href="#">Utensilios y cubertería</a></li>
+                        <li><a href="#">Sistemas de tratamiento de agua</a></li>
+                        <li><a href="#">Sistemas de tratamiento del aire</a></li>
+                        <li><a href="#">Accesorio del hogar</a></li>
+                        <li><a href="#">Piezas de recambio para Sistema de tratamiento de Agua</a></li>
+                        <li><a href="#">Mostrar todos los productos</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<!--Final de la barra de navegación-->
+
+<!-- -->
+<div  class="row">
+    <div th:each="producto:${listaProductos}" class="card" style="width: 18rem;">
+        <img class="card-img-top" th:src="${producto.getImagen()}" >
+        <div class="card-body">
+            <h4 th:text="${producto.getNombre()}" class="card-text"/>
+            <p th:text="${producto.getVistaGeneral()}"/>
+        </div>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Nombre</td>
+        <td>Miniatura</td>
+        <td>VistaGeneral</td>
+    </tr>
+    <tr th:each="producto:${listaProductos}">
+        <td th:text="${producto.getIdProducto()}"/>
+        <td th:text="${producto.getNombre()}"/>
+        <td th:text="${producto.getImagen()}"/>
+        <td th:text="${producto.getVistaGeneral()}"/>
+
+    </tr>
+</table>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="/js/menu.js"></script>
+
+</body>
+</html>

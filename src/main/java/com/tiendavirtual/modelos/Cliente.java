@@ -48,42 +48,42 @@ public class Cliente {
 
     @Getter
     @Setter
-    @Column(name="direccionFacturacion")
+    @Column(name="direccion_facturacion")
     private String direccionFacturacion;
 
     @Getter
     @Setter
-    @Column(name="poblacionFacturacion")
+    @Column(name="poblacion_facturacion")
     private String poblacionFacturacion;
 
     @Getter
     @Setter
-    @Column(name="cpFacturacion")
+    @Column(name="cp_facturacion")
     private String cpFacturacion;
 
     @Getter
     @Setter
-    @Column(name="paisFacturacion")
+    @Column(name="pais_fssacturacion")
     private String paisFacturacion;
 
     @Getter
     @Setter
-    @Column(name="direccionEnvio")
+    @Column(name="direccion_envio")
     private String direccionEnvio;
 
     @Getter
     @Setter
-    @Column(name="poblacionEnvio")
+    @Column(name="poblacion_envio")
     private String poblacionEnvio;
 
     @Getter
     @Setter
-    @Column(name="cpEnvio")
+    @Column(name="cp_envio")
     private String cpEnvio;
 
     @Getter
     @Setter
-    @Column(name="paisEnvio")
+    @Column(name="pais_envio")
     private String paisEnvio;
 
     @Getter
@@ -93,11 +93,6 @@ public class Cliente {
 
     @Getter
     @Setter
-    @Column(name="idRol")
+    @Column(name="id_rol")
     private Integer idRol;
-
-
-
-
-
 }

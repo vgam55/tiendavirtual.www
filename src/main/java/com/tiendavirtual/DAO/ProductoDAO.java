@@ -11,5 +11,5 @@ public interface ProductoDAO {
     void deleteProducto(Integer id);
     Producto findProductoById(Integer id);
     void actualizarProducto(Producto producto);
-    List<Producto>getProductoBySubCat(String subcategoria);
+    List<Producto>getProductoBySubCat(Integer subcategoria);
 }
