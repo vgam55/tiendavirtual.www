@@ -77,8 +77,8 @@ public class Producto {
 
     @Getter
     @Setter
-    @Column(name="usos_sugeridos")
-    private String usosSugeridos;
+    @Column(name="uso_sugerido")
+    private String usoSugerido;
 
     @Getter
     @Setter

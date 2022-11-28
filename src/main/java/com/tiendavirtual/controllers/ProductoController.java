@@ -2,11 +2,7 @@ package com.tiendavirtual.controllers;
 
 import com.tiendavirtual.DAO.CategoriaDAO;
 import com.tiendavirtual.DAO.ProductoDAO;
-import com.tiendavirtual.DAO.RolDAO;
-import com.tiendavirtual.modelos.Categoria;
 import com.tiendavirtual.modelos.Producto;
-import com.tiendavirtual.modelos.Rol;
-import com.tiendavirtual.modelos.Subcategoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,16 +26,14 @@ public class ProductoController {
     {
         ArrayList<Producto> productos2=new ArrayList<Producto>();
         productos2=(ArrayList<Producto>) productoDAO.getAllProductos();
-       modelo.addAttribute("productos2",productos2);
+        modelo.addAttribute("productos2",productos2);
         return "productos";
     }
 
     @RequestMapping(value="/productosCli/{subcategoria}", method=RequestMethod.GET)
     public String getProductosbySubCat(Model model, @PathVariable Integer subcategoria)
     {
-        ArrayList<Categoria> listaCategorias= (ArrayList<Categoria>) categoriaDAO.getAllCategoria();
         ArrayList<Producto> listaProductos= (ArrayList<Producto>) productoDAO.getProductoBySubCat(subcategoria);
-        model.addAttribute("listaCategorias", listaCategorias);
         model.addAttribute("listaProductos", listaProductos);
         return "navegacion";
     }

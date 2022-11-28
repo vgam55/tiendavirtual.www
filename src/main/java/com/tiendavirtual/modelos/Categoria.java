@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name="categorias")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+
 public class Categoria {
     @Column(name="id_categoria", insertable=false, updatable=false )
     @Id
@@ -32,6 +32,11 @@ public class Categoria {
     @Getter
     @Setter
     private String miniatura;
+
+    @Override
+    public String toString() {
+        return "nombre: "+nombre+", subcategoria: "+subCat;
+    }
 
     @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     @Getter

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -23,17 +24,12 @@ public class CategoriaController {
     @Autowired
     private CategoriaDAO categoriaDAO;
     @RequestMapping(value="/categorias", method= RequestMethod.GET)
-    public String getAllCategorias() {
-        try {
-            String categorias2;
+    @ResponseBody
+    public List<Categoria> getAllCategorias() {
             ObjectMapper mapper = new ObjectMapper();
             ArrayList<Categoria> categorias1 = new ArrayList<Categoria>();
             categorias1 = (ArrayList<Categoria>) categoriaDAO.getAllCategoria();
-            categorias2 = mapper.writeValueAsString(categorias1);
-            return categorias2;
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+            return categorias1;
     }
 
     }

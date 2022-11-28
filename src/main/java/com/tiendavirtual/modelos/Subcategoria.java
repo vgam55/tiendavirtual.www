@@ -24,12 +24,15 @@ public class Subcategoria {
     @Setter
     private String nombre;
 
+    @Override
+    public String toString() {
+        return "Id: "+id_subcat+" Nombre: "+ nombre;
+    }
+
     @Column(name="descripcion")
     @Getter
     @Setter
     private String descripcion;
-
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_cat")

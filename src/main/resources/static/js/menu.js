@@ -4,13 +4,25 @@ $(document).ready(function(){
         type:"GET",
         dateType:"JSON",
         success:function(datos){
-           $.each(datos,function(index,value){
-             console.log (index+". "+value);
-           })
-
+            var menu="";
+            var submenu="<ul>";
+            for (i=0;i<datos.length;i++)
+             {
+                menu=menu+"<li><a href='#'>"+datos[i].nombre+"</a></li>";
+                for(j=0;j<datos[i].subCat.length;j++)
+                {
+                    submenu=submenu+"<li><a href='#'>"+datos[i].subCat[j].nombre+"</a></li>";
+                }
+                submenu=submenu+'</ul>';
+                menu=menu+submenu;
+                submenu="<ul>";
+             }
+               $("#desplegable").append(menu);
         },
         error:function(xhr, status){
              alert(xhr+"   "+status);
         }
       });
 });
+
+
