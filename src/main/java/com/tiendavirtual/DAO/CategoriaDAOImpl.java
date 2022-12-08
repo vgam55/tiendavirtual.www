@@ -3,6 +3,7 @@ package com.tiendavirtual.DAO;
 import com.tiendavirtual.modelos.Categoria;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -28,22 +29,65 @@ public class CategoriaDAOImpl implements CategoriaDAO {
     }
 
     @Override
-    public void addCategoria(Categoria categoria) {
-
+    public Integer addCategoria(Categoria categoria) {
+        int aniadido=0;
+        //Query para obtener el ultimo registro añadido
+        String selectAll="SELECT categoria FROM Categoria categoria WHERE id_categoria=SCOPE_IDENTITY()";
+        Query query;
+        Categoria categoria1=null;
+        tx=entityManager.getTransaction();
+        tx.begin();
+             entityManager.merge(categoria);
+             query=entityManager.createQuery(selectAll);
+             aniadido=query.getMaxResults();
+        tx.commit();
+        return aniadido;
     }
 
     @Override
-    public void deleteCategoria(Integer id) {
+    public Integer deleteCategoria(Integer id) {
+        int borrado=0;
+        Categoria categoria = entityManager.find(Categoria.class, id);
+        if (categoria!=null)
+        {
+            borrado=1;
+            entityManager.remove(categoria);
+        }
 
+        return borrado;
     }
 
     @Override
-    public Categoria findCategoriaById(Integer id) {
-        return null;
+    public Categoria findCategoriaById(@PathVariable  Integer id) {
+        Categoria categoria=entityManager.find(Categoria.class,id);
+        return categoria;
     }
 
     @Override
-    public void actualizarCategoria(Categoria categoria) {
-
+    public Integer actualizarCategoria(Categoria categoria)
+    {
+        int actualizado=0;
+        tx=entityManager.getTransaction();
+        tx.begin();
+        Categoria categoria1=entityManager.find(Categoria.class, categoria.getId_categoria());
+        if(!"".equals(categoria.getNombre()))
+        {
+            categoria1.setNombre(categoria.getNombre());
+        }
+        if(!"".equals(categoria.getDescripcion()))
+        {
+            categoria1.setDescripcion(categoria.getDescripcion());
+        }
+        if(!"".equals(categoria.getMiniatura()))
+        {
+            categoria.setMiniatura(categoria1.getMiniatura());
+        }
+        categoria1=entityManager.find(Categoria.class, categoria.getId_categoria());
+        if (categoria1.equals(categoria))
+        {
+            actualizado=1;
+        }
+        tx.commit();
+        return actualizado;
     }
 }

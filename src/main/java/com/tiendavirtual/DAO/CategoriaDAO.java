@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface CategoriaDAO {
     List<Categoria> getAllCategoria();
-    void addCategoria(Categoria categoria);
-    void deleteCategoria(Integer id);
+    Integer addCategoria(Categoria categoria);
+    Integer deleteCategoria(Integer id);
     Categoria findCategoriaById(Integer id);
-    void actualizarCategoria(Categoria categoria);
+    Integer actualizarCategoria(Categoria categoria);
 
 }

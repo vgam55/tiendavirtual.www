@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="categorias")
@@ -37,6 +38,15 @@ public class Categoria {
     public String toString() {
         return "nombre: "+nombre+", subcategoria: "+subCat;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Categoria)) return false;
+        Categoria categoria = (Categoria) o;
+        return Objects.equals(id_categoria, categoria.id_categoria) && Objects.equals(nombre, categoria.nombre) && Objects.equals(descripcion, categoria.descripcion) && Objects.equals(miniatura, categoria.miniatura);
+    }
+
 
     @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     @Getter
