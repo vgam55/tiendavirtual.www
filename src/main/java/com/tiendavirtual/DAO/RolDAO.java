@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface RolDAO {
     List<Rol> getAllRoles();
-    void addRol(Rol rol);
-    void deleteRol(Integer id);
+    Integer addRol(Rol rol);
+    Integer deleteRol(Integer id);
     Rol findRolById(Integer id);
     boolean actualizarRol(Rol rol);
 }

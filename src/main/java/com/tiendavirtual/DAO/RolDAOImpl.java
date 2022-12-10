@@ -32,23 +32,36 @@ public class RolDAOImpl implements RolDAO {
     }
 
     @Override
-    public void addRol(Rol rol) {
-        entityManager.persist(rol);
+    public Integer addRol(Rol rol) {
+        //Query para obtener el ultimo registro añadido
+        String selectPersist="SELECT categoria FROM Rol rol WHERE id_rol=SCOPE_IDENTITY()";
+        Query query;
 
+        int aniadido=0;
+        tx=entityManager.getTransaction();
+        tx=entityManager.getTransaction();
+        tx.begin();
+            entityManager.persist(rol);
+            query=entityManager.createQuery(selectPersist);
+            aniadido=query.getFirstResult();
+        tx.commit();
+        return aniadido;
     }
 
     @Override
-    public void deleteRol(Integer id) {
+    public Integer deleteRol(Integer id) {
+        int borrado=0;
         Rol rol=null;
         tx=entityManager.getTransaction();
         tx.begin();
         rol=entityManager.find(Rol.class, id);
         if(rol!=null)
         {
+            borrado=1;
             entityManager.remove(rol);
         }
         tx.commit();
-
+        return borrado;
     }
 
     @Override

@@ -34,12 +34,11 @@ public class CategoriaDAOImpl implements CategoriaDAO {
         //Query para obtener el ultimo registro añadido
         String selectAll="SELECT categoria FROM Categoria categoria WHERE id_categoria=SCOPE_IDENTITY()";
         Query query;
-        Categoria categoria1=null;
         tx=entityManager.getTransaction();
         tx.begin();
              entityManager.merge(categoria);
              query=entityManager.createQuery(selectAll);
-             aniadido=query.getMaxResults();
+             aniadido=query.getFirstResult();
         tx.commit();
         return aniadido;
     }
