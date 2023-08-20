@@ -51,7 +51,7 @@ public class CategoriaController {
         return borrado;
     }
 
-    @RequestMapping(value="/actualizarCategoriasAdmin/{categoria]", method=RequestMethod.POST)
+    @RequestMapping(value="/actualizarCategoriasAdmin/{categoria}", method=RequestMethod.POST)
     @ResponseBody
     public Integer actualizarCategoria(@PathVariable Categoria categoria)
     {

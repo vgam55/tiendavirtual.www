@@ -1,28 +1,56 @@
+function submenus(menus)
+{
+      var productos='';
+      var varSubCat='';
+
+       productos='';
+       for (j=0; j<menus.length; j++)
+       {
+
+          productos=productos+'<li><a href="#">'+menus[j].nombre+'</a> <ul>';
+          varSubCat=menus[j].subCat;
+          for (k=0;k<varSubCat.length; k++)
+           {
+               productos=productos+'<li><a href="#">'+varSubCat[k].nombre+'</a></li>';
+           }
+
+             productos=productos+'</ul></li>';
+
+       }
+       productos=productos+'</ul>';
+
+     return productos;
+}
+
 $(document).ready(function(){
-  $.ajax({
+ $.ajax({
         url:"/categorias",
         type:"GET",
         dateType:"JSON",
         success:function(datos){
-            var menu="";
-            var submenu="<ul>";
-            for (i=0;i<datos.length;i++)
-             {
-                menu=menu+"<li><a href='#'>"+datos[i].nombre+"</a></li>";
-                for(j=0;j<datos[i].subCat.length;j++)
-                {
-                    submenu=submenu+"<li><a href='#'>"+datos[i].subCat[j].nombre+"</a></li>";
-                }
-                submenu=submenu+'</ul>';
-                menu=menu+submenu;
-                submenu="<ul>";
-             }
-               $("#desplegable").append(menu);
+var principales=["Productos", "Promociones", "Acerca de", "Oportunidad de negocio"];
+
+              var principal="";
+              //Creamos el menu principal con las opciones que aparecen directamente
+              principal='<ul class="nav">';
+              for(i=0;i<principales.length;i++)
+              {
+                  principal=principal+'<li><a href="#">'+principales[i]+'</a>';
+                  if(principales[i]=='Productos')
+                  {
+                    principal=principal+'<ul>'+submenus(datos);
+                  }
+                  principal=principal+'</li>';
+              }
+              principal=principal+'</ul>';
+              $("#header").append(principal);
+
+
+             // $("#Productos").append(productos);
         },
-        error:function(xhr, status){
-             alert(xhr+"   "+status);
-        }
-      });
+        error: function(xhr, status){
+               alert(xhr+"   "+status);
+              }
+        });
+
 });
-
-
